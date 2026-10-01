@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>指标计算器</title>
+  <meta name="description" content="输入指标，计算综合值">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>指标计算器</h1>
+      <p class="subtitle">输入各项指标，点击计算得到结果</p>
+    </header>
+
+    <section class="card">
+      <form id="calc-form" autocomplete="off">
+        <div id="inputs" class="inputs"></div>
+        <div class="actions">
+          <button type="submit" class="btn-primary">计 算</button>
+          <button type="button" id="reset-btn" class="btn-ghost">重 置</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="result-card" id="result-card" hidden>
+      <span class="result-label">计算结果</span>
+      <span class="result-value" id="result-value">--</span>
+      <span class="result-unit" id="result-unit"></span>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> Alan</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
