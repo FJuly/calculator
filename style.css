@@ -55,6 +55,20 @@ body {
   color: var(--text-muted);
 }
 
+.nav {
+  margin-top: 10px;
+}
+
+.nav a {
+  font-size: 13px;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
 .card {
   background: var(--card);
   border-radius: var(--radius);
@@ -205,4 +219,157 @@ body {
 @media (max-width: 420px) {
   .header h1 { font-size: 22px; }
   .result-value { font-size: 32px; }
+}
+
+/* ---- 风险预测页 ---- */
+
+body.page-wide {
+  justify-content: flex-start;
+  padding-top: 48px;
+}
+
+.container.wide {
+  max-width: 960px;
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.inputs.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 20px;
+}
+
+.field select {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 16px;
+  color: var(--text);
+  background: #fbfcfe;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7590' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+.field select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(59, 108, 240, 0.15);
+}
+
+.hint {
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.error {
+  color: #c0392b;
+  font-size: 14px;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.result-grid .result-card {
+  margin-top: 0;
+  padding: 18px 16px;
+}
+
+.result-grid .result-value {
+  font-size: 30px;
+}
+
+.risk-badge {
+  padding: 2px 18px;
+  border-radius: 999px;
+  font-size: 26px !important;
+}
+
+.risk-badge.high {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: #fff;
+}
+
+.risk-badge.low {
+  background: linear-gradient(135deg, #27ae60, #1e8449);
+  color: #fff;
+}
+
+.chart-card {
+  margin-top: 20px;
+}
+
+.chart-card svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.chart-card .grid {
+  stroke: #e4e8f2;
+  stroke-width: 1;
+}
+
+.chart-card .tick {
+  font-size: 12px;
+  fill: #6b7590;
+}
+
+.chart-card .curve {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+.chart-card .dot {
+  fill: #fff;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+}
+
+.surv-table {
+  margin-top: 12px;
+}
+
+.surv-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.surv-table th,
+.surv-table td {
+  padding: 8px 10px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.surv-table th {
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+@media (max-width: 720px) {
+  .inputs.grid-2 {
+    grid-template-columns: 1fr;
+  }
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
 }

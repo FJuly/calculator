@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生存风险预测 · GBM-Cox 模型</title>
+  <meta name="description" content="基于 GBM-Cox 生存模型的风险评分与生存概率预测，浏览器本地计算，无服务端">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-wide">
+  <main class="container wide">
+    <header class="header">
+      <h1>生存风险预测</h1>
+      <p class="subtitle">GBM-Cox 模型 · 全部计算在浏览器本地完成，数据不会上传</p>
+      <nav class="nav"><a href="index.html">← 指标计算器</a></nav>
+    </header>
+
+    <section class="card">
+      <div class="card-title">患者指标</div>
+      <form id="predict-form" autocomplete="off">
+        <div id="inputs" class="inputs grid-2"></div>
+        <p class="hint">未填写的指标将按模型缺失值分支处理（与 R predict.gbm 一致）</p>
+        <div class="actions">
+          <button type="submit" class="btn-primary">预 测</button>
+          <button type="button" id="reset-btn" class="btn-ghost">重 置</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="results" hidden>
+      <div class="result-grid">
+        <div class="result-card">
+          <span class="result-label">风险评分 (linear predictor)</span>
+          <span class="result-value" id="risk-score">--</span>
+        </div>
+        <div class="result-card">
+          <span class="result-label">风险比 HR = exp(评分)</span>
+          <span class="result-value" id="risk-hr">--</span>
+        </div>
+        <div class="result-card">
+          <span class="result-label">风险分层</span>
+          <span class="result-value risk-badge" id="risk-group">--</span>
+          <span class="result-unit" id="cutoff-note"></span>
+        </div>
+      </div>
+
+      <div class="card chart-card">
+        <div class="card-title">预测生存曲线 S(t)</div>
+        <div id="surv-chart"></div>
+        <div id="surv-table" class="surv-table"></div>
+        <p class="hint">生存概率基于训练集 Breslow 基线累积风险估计，仅供研究参考</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>GBM-Cox · <span id="model-brief"></span></span>
+    </footer>
+  </main>
+
+  <script src="gbm.js"></script>
+  <script src="risk.js"></script>
+</body>
+</html>
